@@ -25,4 +25,13 @@ export class UsersService {
     return user;
   }
 
+  async deleteUser(cpf: string) {
+    const result = await this.userRepository.delete({ cpf: cpf });
+    if (result.affected === 0) {
+      throw new NotFoundException(
+        'Não foi encontrado um usuário com o cpf informado',
+      );
+    }
+  }
+
 }

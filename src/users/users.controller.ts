@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Param } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, Delete } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UsersService } from './users.service';
 import { ReturnUserDto } from './dtos/return-user.dto';
@@ -24,6 +24,14 @@ export class UsersController {
     return {
       user,
       message: 'Usuário encontrado',
+    };
+  }
+
+  @Delete(':cpf')
+  async deleteUser(@Param('cpf') cpf: string) {
+    await this.usersService.deleteUser(cpf);
+    return {
+      message: 'Usuário removido com sucesso',
     };
   }
 }
