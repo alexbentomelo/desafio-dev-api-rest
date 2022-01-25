@@ -2,6 +2,7 @@
 Deve ser possível criar e remover portadores
 Um portador deve conter apenas seu nome completo e CPF
 O CPF deve ser válido e único no cadastro de portadores
+##################################
 As contas digital Dock devem conter as seguintes funcionalidades:
 A conta deve ser criada utilizando o CPF do portador
 Uma conta deve ter seu saldo, número e agência disponíveis para consulta
