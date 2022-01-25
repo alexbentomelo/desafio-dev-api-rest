@@ -1,9 +1,10 @@
-import { Controller, Post, Body, Get, Param } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, Patch, ValidationPipe } from '@nestjs/common';
 import { ContaBancariaRepository } from './contasBancaria.repository';
 import { CreateContaDto } from './dtos/create-conta.dto';
 import { ContaBancaria } from './contasBancaria.entity';
 import { ContasBancariasService } from './contas-bancarias.service';
 import { ReturnContaDto } from './dtos/return-conta.dto';
+import { UpdateContaDto } from './dtos/update-conta.dto';
 
 @Controller('contas-bancarias')
 export class ContasBancariasController {
@@ -28,5 +29,14 @@ export class ContasBancariasController {
       conta,
       message: 'Saldo da Conta',
     };
+  }
+
+
+  @Patch(':cpf')
+  async updateAccount(
+    @Body(ValidationPipe) updateStatusDto: UpdateContaDto,
+    @Param('cpf') cpf: string,
+  ) {
+      return this.contaService.updateUser(updateStatusDto, cpf);
   }
 }

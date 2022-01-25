@@ -1,0 +1,6 @@
+export enum ContaStatus {
+    ATIVA = 'ATIVA',
+    DESATIVADA = 'DESATIVADA',
+    BLOQUEADA = 'BLOQUEADA',
+    DESBLOQUEADA = 'DESBLOQUEADA',
+  }
