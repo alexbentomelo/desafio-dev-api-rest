@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param } from '@nestjs/common';
 import { ContaBancariaRepository } from './contasBancaria.repository';
 import { CreateContaDto } from './dtos/create-conta.dto';
 import { ContaBancaria } from './contasBancaria.entity';
@@ -18,6 +18,15 @@ export class ContasBancariasController {
     return {
       conta,
       message: 'Conta criada com sucesso',
+    };
+  }
+
+  @Get(':cpf')
+  async findUserById(@Param('cpf') cpf): Promise<ReturnContaDto> {
+    const conta = await this.contaService.findAccountByCPF(cpf);
+    return {
+      conta,
+      message: 'Saldo da Conta',
     };
   }
 }
